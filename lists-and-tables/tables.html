@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <title>HTML Tables</title>
+  </head>
+
+  <body>
+    <table
+      bgcolor="e6d8f0"
+      bordercolor="black"
+      border="1"
+      cellspacing="0"
+      cellpadding="8"
+    >
+      <caption>
+        Sales Report for Last Three Months
+      </caption>
+      <thead>
+        <tr>
+          <th>S#</th>
+          <th width="300">Sales Person</th>
+          <th>Store</th>
+          <th>Jan</th>
+          <th>Feb</th>
+          <th>Mar</th>
+          <th>Total</th>
+          <th>Statistics</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John</td>
+          <td>Store 1</td>
+          <td>$2500</td>
+          <td>$3500</td>
+          <td>$5000</td>
+          <td>$11000</td>
+          <td rowspan="2" valign="bottom">Total Discounts = $1400</td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Sara</td>
+          <td>Store 2</td>
+          <td>$1500</td>
+          <td>$2500</td>
+          <td>$4000</td>
+          <td>$8000</td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="3" align="center">
+            <strong>Total</strong>
+          </td>
+          <td>$4000</td>
+          <td>$6000</td>
+          <td>$9000</td>
+          <td colspan="2">$19000</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
