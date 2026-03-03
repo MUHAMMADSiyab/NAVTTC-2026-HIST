@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Form</title>
+  </head>
+  <body>
+    <form method="get">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        readonly
+        placeholder="e.g. johndoe, sarasmith"
+      />
+
+      <br /><br />
+
+      <input type="email" disabled placeholder="johndoe@yahoo.com" />
+
+      <br /><br />
+
+      <input type="password" placeholder="********" />
+
+      <br /><br />
+
+      <input type="number" placeholder="Age" min="5" max="25" />
+
+      <br /><br />
+
+      <input type="url" placeholder="x.com/cnn" />
+
+      <br /><br />
+
+      <input type="date" required min="2026-03-01" max="2026-03-31" />
+
+      <br /><br />
+
+      <input type="time" />
+
+      <br /><br />
+
+      <input type="datetime-local" />
+
+      <br /><br />
+
+      <input type="month" />
+
+      <br /><br />
+
+      <input type="week" />
+
+      <br /><br />
+
+      <input type="color" />
+
+      <br /><br />
+
+      <input type="range" min="30" max="80" name="price" />
+
+      <br /><br />
+
+      <input type="checkbox" name="hobby" value="Cricket" id="cricket" />
+      <label for="cricket">Cricket</label>
+
+      <input type="checkbox" name="hobby" value="Football" id="football" />
+      <label for="football">Football</label>
+
+      <br /><br />
+
+      <input type="radio" name="gender" checked value="M" id="male" />
+      <label for="male">Male</label>
+
+      <input type="radio" name="gender" value="F" id="female" />
+      <label for="female">Female</label>
+
+      <br /><br />
+
+      <select name="country" id="country" multiple>
+        <option value="Pakistan">Pakistan</option>
+        <option value="India">India</option>
+        <option value="USA" selected>USA</option>
+      </select>
+
+      <br /><br />
+
+      <input type="text" id="country" list="countries" />
+      <datalist name="country" id="countries" multiple>
+        <option value="Pakistan">Pakistan</option>
+        <option value="India">India</option>
+        <option value="USA" selected>USA</option>
+      </datalist>
+
+      <br /><br />
+      <label for="feedback">Feedback <em>(optional)</em></label>
+      <textarea
+        rows="5"
+        cols="40"
+        name="feedback"
+        id="feedback"
+        placeholder="Enter your feedback"
+      ></textarea>
+
+      <br /><br />
+
+      <input type="file" multiple accept="application/pdf" />
+
+      <br /><br />
+
+      <input type="hidden" name="csrf_token" value="34234hk324u832432kj4" />
+
+      <input type="submit" value="Register" />
+      <input type="reset" value="Reset" />
+    </form>
+  </body>
+</html>
