@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="keywords"
+      content="mobiles, samsun, apple iphone, iphone 17 pro max"
+    />
+    <meta name="description" content="Buy and sell mobile phones." />
+    <title>Semantic & Modern HTML5 Elements</title>
+  </head>
+  <body>
+    <details open>
+      <summary>What are the available plans/packages?</summary>
+
+      <h4>Available Packages</h4>
+      <ol>
+        <li>Free: $0/mo</li>
+        <li>Silver: $20/mo</li>
+        <li>Gold: $100/mo</li>
+      </ol>
+    </details>
+
+    <form>
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" placeholder="Enter your full name" />
+
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="Enter your email address" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Account Information</legend>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+        />
+      </fieldset>
+
+      <br /><br />
+    </form>
+
+    <dialog id="successDialog">
+      <h4>Success!</h4>
+      <p>Your task has been queued</p>
+
+      <button onclick="successDialog.close()">Close</button>
+    </dialog>
+
+    <button onclick="successDialog.showModal()">Open Dialog</button>
+
+    <br /><br />
+
+    <progress value="50" max="100"></progress>
+
+    <br /><br />
+
+    <div>
+      <h1>About Us</h1>
+      <p>This is the about us area of the webpage</p>
+    </div>
+
+    <section>
+      <h1>About Us</h1>
+      <p>This is the about us area of the webpage</p>
+    </section>
+
+    <header></header>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Gallery</a>
+      <a href="#">Projects</a>
+    </nav>
+
+    <aside></aside>
+
+    <main></main>
+
+    <article>
+      <header></header>
+
+      <aside></aside>
+
+      <footer></footer>
+    </article>
+
+    <footer>
+      <small>&copy; 2025-26. All right reserved.</small>
+    </footer>
+  </body>
+</html>
