@@ -17,7 +17,9 @@
 
     ?>
 
-    <form action="process.php" method="post">
+
+    <div class="errors"></div>
+    <form action="process.php" method="post" id="form">
         <label for="name">Name</label>
         <input type="name" name="name" id="name" required> <br><br>
 
@@ -35,6 +37,33 @@
         <input type="submit" value="Register">
 
     </form>
+
+    <script>
+        const form = document.getElementById('form');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+
+            const formData = new FormData(this);
+            // formData.append(
+            //     'username', 
+            //     document.getElementById('username').value
+            // )
+
+            const res = await fetch('process.php', {
+                method: "post",
+                body: formData,
+            });
+
+            const data = await res.text();
+
+
+            const errorsElement = document.querySelector('.errors');
+            errorsElement.innerHTML += data;
+
+        })
+    </script>
 
 </body>
 
