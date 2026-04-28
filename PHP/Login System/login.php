@@ -24,6 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         } elseif (!$auth->attempt($email, $password)) {
             $error = "Provided credentials are incorrect.";
         } else {
+            if (isset($_POST['remember'])) {
+                $userId = $auth->user()['id'];
+                $auth->setRememberToken($userId);
+            }
+
             header("Location: dashboard.php");
             exit;
         }
@@ -85,6 +90,13 @@ $csrfToken = $auth->generateCsrfToken();
                     type="password"
                     name="password"
                     id="password">
+            </div>
+
+            <div>
+                <label for="remember">
+                    <input type="checkbox" name="remember" id="remember">
+                    Remember Me
+                </label>
             </div>
 
             <button type="submit">Login</button>

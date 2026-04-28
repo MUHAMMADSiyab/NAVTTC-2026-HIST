@@ -6,6 +6,7 @@ class Auth extends Database
 {
     private static string $sessionName = "auth_user";
     private static string $csrfTokenName = "csrf_token";
+    private static string $cookieName = "remember_token";
 
     public function __construct()
     {
@@ -68,6 +69,48 @@ class Auth extends Database
         return true;
     }
 
+    public function setRememberToken(int $userId): void
+    {
+        $token = bin2hex(random_bytes(32));
+        $expires = date("Y-m-d H:i:s", strtotime("+30 days"));
+
+        $this->query(
+            "UPDATE users SET remember_token = ?, remember_expires = ? WHERE id = ?",
+            "ssi",
+            $token,
+            $expires,
+            $userId
+        );
+
+        setcookie(self::$cookieName, $token, strtotime("+30 days"), "/", "", true);
+    }
+
+    public function loginFromCookie(): bool
+    {
+        $token = $_COOKIE[self::$cookieName] ?? "";
+
+        if (empty($token)) return false;
+
+        $result = $this->query(
+            "SELECT id, name, email FROM users WHERE remember_token = ? AND remember_expires > NOW() LIMIT 1",
+            "s",
+            $token
+        );
+
+        if (!$result instanceof mysqli_result) return false;
+
+        $user = $result->fetch_assoc();
+
+        if (!$user) return false;
+
+        session_regenerate_id(true);
+
+        $_SESSION[self::$sessionName] = $user;
+
+        return true;
+    }
+
+
     public function redirectIfAutenticated(string $to = "dashboard.php"): void
     {
         if ($this->check()) {
@@ -86,7 +129,15 @@ class Auth extends Database
 
     public function logout(): void
     {
-        unset($_SESSION[self::$sessionName], $_SESSION[self::$csrfTokenName]);
+        unset(
+            $_SESSION[self::$sessionName],
+            $_SESSION[self::$csrfTokenName],
+        );
+
+        if (isset($_COOKIE[self::$cookieName])) {
+            setcookie(self::$cookieName, "", time() - 3600, "/", "", true);
+        }
+
         session_regenerate_id(true);
     }
 }

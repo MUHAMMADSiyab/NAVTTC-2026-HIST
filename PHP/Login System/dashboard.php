@@ -3,6 +3,11 @@
 require_once "Auth.php";
 
 $auth = new Auth();
+
+if (!$auth->check()) {
+    $auth->loginFromCookie();
+}
+
 $auth->requiresAuth();
 
 $user = $auth->user();
